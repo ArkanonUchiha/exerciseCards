@@ -4,7 +4,7 @@ import ReactDOM from '../node_modules/react-dom';
 
 
 ReactDOM.render(
-  'Mi primer HOLA MUNDO con React',
+  'Saludo desde React',
   document.getElementById('app')
 );
 

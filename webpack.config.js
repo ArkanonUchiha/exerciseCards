@@ -15,17 +15,38 @@ const javascriptRules = {
   }
 };
 
-module.exports = {
+// CONFIGURACION DE WEBPACK COMO OBJETO
+// module.exports = {
+//   output: {
+//     filename: 'app.[hash].js'
+//   },
+//   module: {
+//     rules: [javascriptRules]
+//   },
+//   devServer: {
+//     port: 9000
+//   },
+//   plugins: [
+//     new HtmlWebpackPlugin({
+//       template: 'src/index.html',
+//     })
+//   ]
+// };
+
+// CONFIGURACION DE WEBPACK COMO FUNCION
+module.exports = (env, {mode}) => ({
   output: {
-    filename: 'app.[contentHash].js'
+    filename: mode === 'production' ? 'app.[chunkhash].js' : 'app.[hash].js'
   },
   module: {
     rules: [javascriptRules]
   },
+  devServer: {
+    port: 9000
+  },
   plugins: [
-    new HtmlWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     })
   ]
-};
+});
